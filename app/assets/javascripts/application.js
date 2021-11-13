@@ -17,6 +17,6 @@
 //= require flatpickr/l10n/ja
 //= require jquery3
 //= require popper
-//= require bootstrap-sprokets
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
