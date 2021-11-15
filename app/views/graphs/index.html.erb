@@ -1,24 +1,44 @@
-<p class="my-4">フォームをクリックしたときに,青色の帯のカレンダーが出れば「flatpickr」の導入はOKです</p>
-<input class="form-control bg-white" id="date-form" type="text" placeholder="日付を設定" readonly>
+<p class="mt-4">棒グラフが表示されていれば,「Chart.js」の導入はOKです</p>
+<canvas id="bar-chart"></canvas>
 
 <script>
-  const TODAY = new Date(new Date().setHours(0, 0, 0, 0))
-  const A_MONTH_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth() -1, TODAY.getDate())
+  // 棒グラフのデータ（値を変更するとグラフが変更することを確認する）
+  let barLabel = ['1月', '2月', '3月', '4月', '5月', '6月']
+  let barData = [5, 4, 2, 6, 5, 8]
 
-  // 選択できない日付データ
-  const DISABLE_DATES = ['2019-12-10', '2019-12-20', '2019-12-30', '2020-01-10', '2020-01-20', '2020-01-30']
+  // 棒グラフのオプション
 
-  // カレンダーの日本語化
-  flatpickr.localize(flatpickr.l10ns.ja)
-  
-  // カレンダーの表示
-  flatpickr('#date-form', {
-    // スマートフォンでもカレンダーに「flatpickr」を使用
-    disableMobile: true,
-    // 1ヶ月前から本日まで選択可
-    minDate: A_MONTH_AGO,
-    maxDate: TODAY,
-    // 選択できない日付
-    disable: DISABLE_DATES
+  const barChartData = {
+    labels: barLabel,
+    datasets: [{
+      label: '得点',
+      data: barData,
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  }
+
+  const barChartOption = {
+      title: {
+        display: true,
+        text: '棒グラフ'
+      },
+      scales: {
+        yAxes: [{
+            ticks: {
+                // y軸のメモリを 0 からスタートに強制
+                beginAtZero: true
+            }
+        }]
+      }
+  }
+
+  // 棒グラフを表示
+  const barChartContext = document.getElementById("bar-chart").getContext('2d')
+  new Chart(barChartContext, {
+    type: 'bar',
+    data: barChartData,
+    options: barChartOption
   })
 </script>
