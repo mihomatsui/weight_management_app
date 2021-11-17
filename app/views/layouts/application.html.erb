@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <!-- 全ページにナビバーを追加 -->
+    <%= render 'shared/header' %>
+    <!-- ログイン関連ページ以外にフラッシュ表示部分を追加 -->
+    <% if controller_name == 'graphs' %>
+      <%= render 'shared/flash_messages' %>
+    <% end %>
     <!-- 全ページの横幅に上限を設ける(cssは後に追加) -->
     <div class="graph-container">
       <%= yield %>

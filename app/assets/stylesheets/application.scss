@@ -24,3 +24,12 @@
    max-width: 768px;
    padding: 1rem;
  }
+
+ // フラッシュ
+ div.alert-notice {
+   @extend .alert-info;
+ }
+
+ div.alert-alert {
+   @extend .alert-danger;
+ }
