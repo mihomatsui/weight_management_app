@@ -8,8 +8,23 @@ document.addEventListener('turbolinks:load', () => {
   const maxDate = (date1, date2) => (date1 > date2 ? date1 : date2);
 
   // データの初日・最終日
-  const START_DATE = convertDate(gon.weight_records[0].date);
-  const END_DATE = convertDate(gon.weight_records[gon.weight_records.length - 1].date);
+  const START_DATE = convertDate(gon.weight_records[0].date)
+  const END_DATE = convertDate(gon.weight_records[gon.weight_records.length - 1].date)
+  // カレンダーの日本語化
+  flatpickr.localize(flatpickr.l10ns.ja)
+  const periodCalendarOption = {
+      // スマートフォンでもカレンダーに「flatpickr」を使用
+      disableMobile: true,
+      // 選択できる期間を設定
+      minDate: START_DATE,
+      maxDate: END_DATE,
+      // 日付選択後のイベント
+      // onChange: 
+  }
+
+  // カレンダー
+  const startCalendarFlatpickr = flatpickr('#start-calendar', periodCalendarOption)
+  const endCalendarFlatpickr = flatpickr('#end-calendar', periodCalendarOption)
 
   const TODAY = convertDate(new Date());
   const A_WEEK_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 6);
