@@ -1,4 +1,19 @@
 <%= Gon::Base.render_data %>
+<div class="row no-gutters">
+  <div class="input-group col-sm-6 pr-sm-3 mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">開始</span>
+    </div>
+    <input type="text" id="start-calendar" class="form-control bg-white text-center">
+  </div>
+  <div class="input-group col-sm-6 pr-sm-3 mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">終了</span>
+    </div>
+    <input type="text" id="end-calendar" class="form-control bg-white text-center">
+  </div>
+</div>
+
 <div class="row">
   <div class="col-6 col-sm-3">
     <input type="button" value="過去1週間" id="a-week-button" class="btn btn-success btn-block mt-3">
