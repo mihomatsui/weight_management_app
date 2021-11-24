@@ -12,6 +12,17 @@ document.addEventListener('turbolinks:load', () => {
   const END_DATE = convertDate(gon.weight_records[gon.weight_records.length - 1].date)
   // カレンダーの日本語化
   flatpickr.localize(flatpickr.l10ns.ja)
+
+  const drawGraphForPeriod = () => {
+      let from = convertDate(document.getElementById('start-calendar').value)
+      let to = convertDate(document.getElementById('end-calendar').value)
+      if (from > to) {
+          alert('終了日は開始日以降の日付に設定して下さい')
+      } else {
+          drawGraph(from, to)
+      }
+  }
+
   const periodCalendarOption = {
       // スマートフォンでもカレンダーに「flatpickr」を使用
       disableMobile: true,
@@ -19,7 +30,7 @@ document.addEventListener('turbolinks:load', () => {
       minDate: START_DATE,
       maxDate: END_DATE,
       // 日付選択後のイベント
-      // onChange: 
+      onChange: drawGraphForPeriod
   }
 
   // カレンダー
