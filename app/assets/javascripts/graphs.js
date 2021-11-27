@@ -37,6 +37,14 @@ document.addEventListener('turbolinks:load', () => {
   const startCalendarFlatpickr = flatpickr('#start-calendar', periodCalendarOption)
   const endCalendarFlatpickr = flatpickr('#end-calendar', periodCalendarOption)
 
+  // 新規登録用のカレンダー
+  flatpickr('#new-calendar', {
+      disableMobile: true,
+      // 記録のある日付を選択できないようにする
+      disable: gon.recorded_dates,
+      defaultDate: 'today',
+  })
+
   const TODAY = convertDate(new Date());
   const A_WEEK_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 6);
   const TWO_WEEKS_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 13);
