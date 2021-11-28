@@ -28,7 +28,7 @@ class GraphsController < ApplicationController
     else
       flash[:alert] = 'エラーが発生しました'
     end
-    redirected_to root_path
+    redirect_to root_path
   end
 
   private
