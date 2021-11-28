@@ -45,6 +45,24 @@ document.addEventListener('turbolinks:load', () => {
       defaultDate: 'today',
   })
 
+  // 編集モーダルで日付を選択したときに,記録された体重を表示する関数
+  const editCalendar = document.getElementById('edit-calendar')
+  const editWeight = document.getElementById('edit-weight')
+  const inputWeight = () => {
+      let record = gon.weight_records.find((record) => record.date === editCalendar.value)
+      editWeight.value = record.weight
+  }
+
+  // 記録編集用のカレンダー
+  flatpickr('#edit-calendar', {
+      disableMobile: true,
+      // 記録のある日付のみ選択できるようにする
+      enable: gon.recorded_dates,
+      // 記録が無い場合は日付を選択できないようにする
+      noCalendar: gon.recorded_dates.length === 0,
+      onChange: inputWeight
+  })
+
   const TODAY = convertDate(new Date());
   const A_WEEK_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 6);
   const TWO_WEEKS_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 13);
