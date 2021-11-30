@@ -1,7 +1,7 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <%= link_to "体重管理アプリ", root_path, class: 'navbar-brand' %>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expand="false" aria-label="ナビゲーションの切替">
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -15,7 +15,7 @@
           </li>
         <% else %>  
           <li class="nav-item active">
-            <%= link_to 'アカウント', new_user_registration_path, class: 'nav-link' %>
+            <%= link_to 'アカウント登録', new_user_registration_path, class: 'nav-link' %>
           </li>
           <li class="nav-item active">
             <%= link_to 'ログイン', new_user_session_path, method: :delete, class: 'nav-link' %>
